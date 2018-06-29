@@ -2,8 +2,10 @@
   <div class="detail-wrap">
     <div class="detail-left">
       <div class="product-board">
+        <!-- 获取不同路由下的图片 -->
         <img :src="productIcon">
         <ul>
+          <!-- 列表项确认路由地址 -->
           <router-link v-for="item in products" :key="item.id" :to="{ path: item.path }" tag="li" active-class="active">
             {{ item.name }}
           </router-link>
@@ -50,6 +52,7 @@ export default {
           active: false
         }
       ],
+      // 数据设置路由对应图片地址
       imgMap: {
         '/detail/count': require("../assets/images/1.png"),
         '/detail/forecast': require("../assets/images/2.png"),
@@ -58,6 +61,7 @@ export default {
       }
     }
   },
+  //计算属性：逻辑计算，根据imgMap数据中的地址绑定图片
   computed:{
     productIcon(){
       return this.imgMap[this.$route.path]
@@ -171,7 +175,7 @@ export default {
   display: inline-block;
   height: 30px;
   line-height: 30px;
-  padding: 1 10px;
+  padding: 0 10px;
   text-align: center;
   background-color: #4fc08d;
   color: #fff;

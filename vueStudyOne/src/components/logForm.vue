@@ -1,14 +1,17 @@
 <template>
   <div class="login-form">
     <div class="g-form">
+
       <div class="g-form-line">
         <span class="g-form-label">用户名：</span>
         <div class="g-form-input">
+          <!-- 绑定用户的输入值，并且跟条件去匹配 -->
           <input type="text" 
           v-model="usernameModel" placeholder="请输入用户名">
         </div>
         <span class="g-form-error">{{ userErrors.errorText }}</span>
       </div>
+
       <div class="g-form-line">
         <span class="g-form-label">密码：</span>
         <div class="g-form-input">
@@ -17,12 +20,14 @@
         </div>
         <span class="g-form-error">{{ passwordErrors.errorText }}</span>
       </div>
+
       <div class="g-form-line">
         <div class="g-form-btn">
           <a class="button" @click="onLogin">登录</a>
         </div>
       </div>
       <p>{{ errorText }}</p>
+
     </div>
   </div>
 </template>
@@ -38,8 +43,10 @@ export default {
   },
   computed: {
     userErrors () {
+      // 定义两个变量，显示错误消息和判断输入的状态
       let errorText, status
       if (!/@/g.test(this.usernameModel)) {
+        // 不匹配则状态错误，并且显示错误消息
         status = false
         errorText = '不包含@'
       }
@@ -47,7 +54,7 @@ export default {
         status = true
         errorText = ''
       }
-      // 刚进来的时候值为空，之后一直判断
+      // 新建个变量来控制刚进来的时候值为空，之后一直存在值
       if (!this.userFlag) {
         errorText = ''
         this.userFlag = true
@@ -79,22 +86,25 @@ export default {
   },
   methods: {
     onLogin () {
+      // 判断两者的输入状态
       if (!this.userErrors.status || !this.passwordErrors.status) {
         this.errorText = '部分选项未通过'
       }
       else {
         this.errorText = ''
+        // 向db.json请求数据
         this.$http.get('api/login')
         .then((res) => {
+          // 请求成功后把数据发送给父组件
           this.$emit('has-log', res.data)
-          // console.log(res)
+          console.log(res)
         }, (error) => {
           console.log(error)
         })
       }
     }
   }
-}
+};
 </script>
 
 <style scoped>
@@ -120,8 +130,8 @@ export default {
     height:30px;
     line-height:30px;
     text-align:center;
-    background-color:#37a90c;
     color:#fff;
+    background-color:#4fc08d;
     cursor:pointer;
 }
 </style>

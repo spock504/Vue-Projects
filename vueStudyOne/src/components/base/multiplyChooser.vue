@@ -16,6 +16,7 @@
 import _ from 'lodash'
 export default {
   props: {
+    // 选择的参数是一个数组
     selections: {
       type: Array,
       default: [{
@@ -35,10 +36,12 @@ export default {
         this.nowIndexes.push(index)  
       }
       else {
+        // 从nowIndexes数组中移除存在的index元素
         this.nowIndexes = _.remove(this.nowIndexes, (idx) => {
           return idx !== index
         })
       }
+
       let nowObjArray = _.map(this.nowIndexes, (idx) => {
         return this.selections[idx]
       })

@@ -41,6 +41,7 @@ import Dialog from './base/dialog'
           }
         },
         methods:{
+          // 无论请求成功还是失败都将当前的orderId传送到数据库中
           checkStatus(){
             this.$http.post('/api/checkOrder',{
               orderId:this.orderId
@@ -55,6 +56,7 @@ import Dialog from './base/dialog'
               this.$emit('on-close-check-dialog')
             }
           },
+          // 点击页面时实现跳转到其他路由地址
           toOrderList(){
             this.$router.push({
               path:'/orderList'

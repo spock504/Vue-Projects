@@ -25,6 +25,7 @@
     },
     data(){
        return {
+        //选择一个变量来控制list的显示
         isDrop:false,
         nowIndex:0
     }
@@ -49,6 +50,7 @@
 }
 .selection-show {
   border: 1px solid #e3e3e3;
+  /* 只设置padding,宽度由文字决定 */
   padding: 0 20px 0 10px;
   display: inline-block;
   position: relative;
@@ -90,7 +92,6 @@
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-
 }
 .selection-list li:hover {
   background: #e3e3e3;

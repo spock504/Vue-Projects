@@ -3,7 +3,7 @@
         <div class="index-left">
             <div class="index-left-block">
                 <h2>全部产品</h2>
-                <template v-for="product in productList">
+                <div v-for="product in productList">
                     <h3>{{ product.title}}</h3>
                     <ul>
                         <li v-for="item in product.list">
@@ -12,7 +12,7 @@
                         </li>
                     </ul>
                     <div v-if='!product.last' class="hr"></div>
-                </template>
+                </div>
             </div>
         <div class="index-left-block lastest-news">
             <h2>最新消息</h2>
@@ -22,11 +22,13 @@
                 </li>
             </ul>
         </div>
-    </div>
+      </div>
 
-    <div class="index-right">
+      <div class="index-right">
         <slide-show :slides="slides" :inv="slideSpeed" @onchange="doSomethingOnSlideChange"></slide-show>
+
         <div class="index-board-list">
+          <!-- class类的拼接 ，根据index设置最后一行边距为0,并且设置不同的背景图-->
             <div class="index-board-item" 
             v-for="(item,index) in boardList"
             :class="[{'line-last':index % 2 !== 0},'index-board-'+item.id]">
@@ -49,9 +51,11 @@ import slideShow from '../components/slideShow'
         components:{
             slideShow
         },
-        created:function(){
-            this.$http.post('api/getNewList')
+        // 页面创建成功就向数据取值
+        created(){
+            this.$http.get('api/getNewList')
             .then((res) =>{
+              // console.log(res)
                 this.newList = res.data
             },(err) => {
                 console.log(err);
@@ -59,13 +63,14 @@ import slideShow from '../components/slideShow'
         },
         methods:{
             doSomethingOnSlideChange(){
-                console.log("doSomethingOnSlideChange")
+                // console.log("doSomethingOnSlideChange翻页了")
             }
         },
         data () {
             return {
                 slideSpeed:2000,
                 slides:[
+                // script中的src需要使用require通过weboack解析地址
                 {
                   src: require('../assets/slideShow/pic1.jpg'),
                   title: 'xxx1',
@@ -121,7 +126,7 @@ import slideShow from '../components/slideShow'
                     pc:{
                         title:'PC产品',
                         list:[
-                                    {
+                        {
                           name: '数据统计',
                           url: 'http://starcraft.com'
                         },

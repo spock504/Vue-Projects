@@ -2,6 +2,7 @@
     <div class="slide-show" @mouseout="runInv" @mouseover="clearInv">
         <div class="slide-img">
             <a :href="slides[nowIndex].href">
+                <!-- nowIndex会自动切换 -->
                 <transition name="slide-trans">
                     <img v-if="isShow" :src="slides[nowIndex].src">
                 </transition>
@@ -23,6 +24,7 @@
 
 <script>
 export  default {
+    // 父组件传递轮播的数据以及轮播时间过来
     props:{
         slides: {
             type:Array,
@@ -40,6 +42,7 @@ export  default {
         }
     },
     computed:{
+        // 逻辑判断：前一页到第一页时回到最后一页
         prevIndex(){
             if (this.nowIndex === 0) {
                 return this.slides.length -1
@@ -47,6 +50,7 @@ export  default {
                 return this.nowIndex -1
             }
         },
+        //后一页到最后一页回到第一页
         nextIndex(){
             if (this.nowIndex === this.slides.length-1) {
                 return 0
@@ -56,6 +60,7 @@ export  default {
         }
     },
     methods:{
+        // goto() 到开始轮播的index页，当前页隐藏，后一页在定时器10ms后显示。而且数据需要传递给父组件
         goto(index){
             this.isShow = false
             setTimeout(()=>{
@@ -65,6 +70,7 @@ export  default {
             },10)
         },
         runInv(){
+            // setInterval()函数不断goto()到下一页
             this.invId = setInterval(() => {
                 this.goto(this.nextIndex);
             }, this.inv)
@@ -73,6 +79,7 @@ export  default {
             clearInterval(this.invId)
         }
     },
+    // mounted编译好的HTML挂载到页面完成后执行的事件钩子，在整个实例中只执行一次
     mounted(){
     this.runInv()
 }

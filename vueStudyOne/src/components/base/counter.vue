@@ -27,6 +27,7 @@
             }
         },
         watch:{
+          // watch是一个对象，监听number函数，将number值传递给父组件
             number(){
                 this.$emit('on-change',this.number)
             }

@@ -26,6 +26,7 @@
                 number: this.min
             }
         },
+        // 监听值的变化
         watch:{
             number(){
                 this.$emit('on-change',this.number)
@@ -75,6 +76,7 @@
   border: none;
   border-top: 1px solid #e3e3e3;
   border-bottom: 1px solid #e3e3e3;
+  /*input比div少2px, 差别的原因是box-sizing,input默认的是box-sizing: border-box; */
   height: 23px;
   line-height: 23px;
   width: 30px;

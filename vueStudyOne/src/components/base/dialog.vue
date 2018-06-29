@@ -1,13 +1,15 @@
 <template>
-  <div>
+  <!-- 设计弹窗的框架样式，再利用slot插槽插进不同的内容 -->
+  <div> 
     <div class="dialog-wrap">
         <div class="dialog-cover" v-if="isShow" @click="closeMyself"></div>
 <!-- 动画效果 -->
         <transition name="drop">
         <div class="dialog-content" v-if="isShow">
           <p class="dialog-close" @click="closeMyself">X</p>
+          <!-- 插槽的位置 -->
           <slot>hello</slot>
-        </div>
+        </div>    
       </transition>
 
     </div>

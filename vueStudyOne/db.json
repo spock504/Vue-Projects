@@ -1,37 +1,41 @@
 {
-  "getNewList":[
-      {
-        "id": 1,
-        "name": "巴拉巴拉叭叭叭粑粑啦啦啦巴拉巴拉啦",
-        "url": "http://starcraft.com"
-      },
-      {
-        "id":2,
-        "name": "哔哩哔哩哔哩哔哩bilibili哔哩哔哩bilibili",
-        "url": "http://warcraft.com"
-      },
-      {
-        "id":3,
-        "name": "淅沥淅沥",
-        "url": "http://overwatch.com",
-        "hot": true
-      },
-      {
-        "id":4,
-        "name": "咕力咕力",
-        "url": "http://hearstone.com"
-      }],
-      "login":{
-        "username":"spock504",
-        "userId":123456
-      },
-      "getPrice":{
-        "amount":678
-      },
-      "createOrder":{
-        "orderId":"6jsd89"
-      },
-        "getOrderList": {
+  "getNewList": [
+    {
+      "id": 1,
+      "name": "巴拉巴拉叭叭叭粑粑啦啦啦巴拉巴拉啦",
+      "url": "http://starcraft.com"
+    },
+    {
+      "id": 2,
+      "name": "哔哩哔哩哔哩哔哩bilibili哔哩哔哩bilibili",
+      "url": "http://warcraft.com"
+    },
+    {
+      "id": 3,
+      "name": "淅沥淅沥",
+      "url": "http://overwatch.com",
+      "hot": true
+    },
+    {
+      "id": 4,
+      "name": "咕力咕力",
+      "url": "http://hearstone.com"
+    }],
+  "login": {
+    "name":"spock",
+    "pwd":123456
+  },
+  "getPrice": {
+    "buyNumber": 1,
+    "buyType": 0,
+    "period": 0,
+    "version": "0",
+    "bankId": null
+  },
+  "createOrder": {
+    "orderId": "6jsd89"
+  },
+  "getOrderList": {
     "list": [
       {
         "orderId": "ddj123",

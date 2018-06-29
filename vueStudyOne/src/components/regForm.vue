@@ -63,7 +63,7 @@ export default {
       this.$emit('on-close')
     }
   }
-}
+};
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
@@ -90,7 +90,7 @@ export default {
     height:30px;
     line-height:30px;
     text-align:center;
-    background-color:#37a90c;
+    background-color:#4fc08d;
     color:#fff;
     cursor:pointer;
 }

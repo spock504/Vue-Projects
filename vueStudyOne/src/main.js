@@ -3,10 +3,10 @@
 import Vue from 'vue'
 import Layout from './components/layout.vue'
 import VueRouter from 'vue-router'
-import IndexPage from './pages/index'
 import VueResource from 'vue-resource'
-import Detail from './pages/detail'
 
+import IndexPage from './pages/index'
+import Detail from './pages/detail'
 import DetailAnalysis from './pages/detail/analysis'
 import DetailCount from './pages/detail/count'
 import DetailForecast from './pages/detail/forecast'
@@ -14,15 +14,16 @@ import DetailPublish from './pages/detail/publish'
 import OrderListPage from './pages/orderList'
 
 
-Vue.use(VueRouter);
-Vue.use(VueResource);
+Vue.use(VueRouter); //路由管理
+Vue.use(VueResource);   //模拟后台数据处理
 
 let router = new VueRouter({
+  // 这种模式充分利用 history.pushState API 来完成 URL 跳转而无须重新加载页面。
     mode:'history',
     routes: [
         {
             path: '/',
-            component: IndexPage
+            component: IndexPage 
         },
         {
             path: '/orderlist',
@@ -31,7 +32,7 @@ let router = new VueRouter({
         {
           path:'/detail',
           component:Detail,
-          redirect:'/detail/count',
+          redirect:'/detail/count',   //不希望用户访问detail页面，所以重定向到该页面上
           children:[
           {
             path: 'analysis',
@@ -56,7 +57,7 @@ let router = new VueRouter({
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
-  router,
+  router,           //路由要在实例中注册
   components: { Layout },
   template: '<Layout/>'
 })

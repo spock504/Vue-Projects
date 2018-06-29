@@ -12,7 +12,7 @@ module.exports = {
     assetsPublicPath: '/',
     proxyTable: {
           '/api':'http://localhost:3000/'
-    },
+    },  //跨域问题的解决
 
     // Various Dev Server settings
     host: 'localhost', // can be overwritten by process.env.HOST

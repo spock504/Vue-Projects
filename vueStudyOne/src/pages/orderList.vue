@@ -20,7 +20,7 @@
       <div class="order-list-option">
         关键词：
         <input type="text" v-model.lazy="query" class="order-query">
-        <!-- 改变全部结束调用 -->
+        <!-- lazy，光标不在输入框内时绑定，即改变全部结束调用 -->
       </div>
     </div>
     <div class="order-list-table">
@@ -108,7 +108,7 @@ export default {
   methods:{
     productChange(obj){
       // console.log(obj)
-      this.productId = obj.value
+    this.productId = obj.value
     this.getTableData()
 
     },
@@ -132,22 +132,28 @@ export default {
       this.$http.post('/api/getOrderList',reqParams)
       .then((res)=>{
         this.tableData = res.data.list
+        console.log(this.tableData)
       },(err)=>{
         console.log(err)
       })
     },
+    //给数组排序
     changeOrder(headItem){
+      //点击按钮时，当前高亮，其他常灰
       this.tableHeads.map((item)=>{
         item.active = false
         return item
       })
       headItem.active = true
+
       if (this.currentOrder === 'asc' ) {
         this.currentOrder = 'desc'
       }
        else if(this.currentOrder === 'desc'){
         this.currentOrder = 'asc'
       }
+      console.log(headItem)
+      //orderBy(排序的数组，排序的依据，正序/反序)
       this.tableData = _.orderBy(this.tableData,headItem.key,this.currentOrder)
     }
   },

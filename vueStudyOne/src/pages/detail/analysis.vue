@@ -191,6 +191,7 @@ export default {
       let buyVersionsArray = _.map(this.versions, (item) => {
         return item.value
       })
+      // 将该页面的数据用新的变量名匹配，
       let reqParams = {
         buyNumber: this.buyNum,
         buyType: this.buyType.value,
@@ -200,7 +201,8 @@ export default {
       }
       this.$http.post('/api/getPrice', reqParams)
       .then((res) => {
-        // console.log(res)
+        // res中的数据就是新的变量名的数据，由于没有定义总价，所以amount获取的值为空，应该是交给后台处理
+        // console.log(res.data.amount)
         this.price = res.data.amount
       })
     },
@@ -221,9 +223,11 @@ export default {
       this.isShowCheckOrder = false
     },
     confirmBuy(){
+      // 数组转化成字符串,[1,2,3] => {1,2,3}
       let buyVersionsArray = _.map(this.versions, (item) => {
         return item.value
       })
+      // console.log(buyVersionsArray.join(','))
       let reqParams = {
         buyNumber: this.buyNum,
         buyType: this.buyType.value,
@@ -238,7 +242,7 @@ export default {
         this.orderId = res.data.orderId
         this.isShowCheckOrder = true
         this.isShowPayDialog = false
-        // console.log(this.orderId)
+        console.log(this.orderId)
       },(err) => {
         // 请求失败调用弹窗
         this.isShowErrDialog = true
@@ -247,6 +251,7 @@ export default {
     }
 
   },
+  // 页面加载完毕后初始化默认值
     mounted(){
       this.buyNum = 1,
       this.buyType=this.buyTypes[0],

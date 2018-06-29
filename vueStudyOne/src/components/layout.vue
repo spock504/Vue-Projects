@@ -3,6 +3,7 @@
   <div>   
     <div class="app-head">
       <div class="app-head-inner">
+        <!-- 支持用户在具有路由功能的应用中 (点击) 导航,to指定目标地址，每个页面的切换都可以回到主页 -->
         <router-link :to="{path:'/'}">
           <img src="../assets/logo.png">
         </router-link>
@@ -18,16 +19,18 @@
       </div>
     </div>
     <div class="app-content">
-      <!-- 用于单页面缓存 -->
+      <!-- 根据路由路径显示主页面，在main.js中有设置路由来自index.vue页面 -->
         <router-view></router-view>
     </div>
     <div class="app-footer">
       <p>&copy; 2018 spock504</p>
     </div>
+    <!-- 三个my-dialog 插件控制三个不同的弹窗，父组件绑定is-show属性传递给子组件，并且根据值判断弹窗是否展示 -->
     <my-dialog :is-show="isShowAboutDialog" @on-close="closeDialog('isShowAboutDialog')">
       <p>关于有很多话</p>
     </my-dialog>
     <my-dialog :is-show="isShowLogDialog" @on-close="closeDialog('isShowLogDialog')">
+      <!-- 插槽有传递has-log事件出来，并且携带相应的值,可作为该函数的参数-->
       <log-form @has-log="onSuccessLog"></log-form>
     </my-dialog>
     <my-dialog :is-show="isShowRegDialog" @on-close="closeDialog('isShowRegDialog')">
@@ -69,14 +72,14 @@ export default {
       this[attr] = false
     },
     onSuccessLog(data){
-      console.log(data)
+      // console.log(data)
       this.username = data.username
     },
     quit(){
       
     }
   }
-}
+}; 
 </script>
 <!-- 全局样式 -->
 <style>
