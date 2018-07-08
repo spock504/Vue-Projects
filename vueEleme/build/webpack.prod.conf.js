@@ -1,7 +1,7 @@
 'use strict'
 const path = require('path')
 const utils = require('./utils')
-const webpack = require('webpack')
+const webpack = require('webpack') //核心编译工具
 const config = require('../config')
 const merge = require('webpack-merge')
 const baseWebpackConfig = require('./webpack.base.conf')

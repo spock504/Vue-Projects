@@ -15,6 +15,10 @@ Vue.use(VueResource)
 // Vue.config.productionTip = false
 const routes = [
         {
+          path:'/',
+          redirect:"goods"
+        },
+        {
           path:'/goods',
           component:goods
         },

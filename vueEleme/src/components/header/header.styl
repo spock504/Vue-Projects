@@ -1,0 +1,221 @@
+@import "../../common/stylus/mixin.styl"
+.header 
+    position: relative
+    color: #fff
+    background-color: rgba(7, 17, 27, .5)
+    overflow: hidden
+    .content-wrap 
+        position: relative
+        padding: 24px 12px 18px 24px
+        font-size: 0    //父元素設置，為了消除元素之间的空白字符
+        .avator
+            display: inline-block  //外div也為圖片大小
+            vertical-align:top
+            img
+                border-radius: 2px
+        .content
+            display: inline-block
+            margin-left: 16px
+            .title 
+                margin: 2px 0 8px 0
+                .brand
+                    display: inline-block //为了宽高能够设置
+                    width:30px
+                    height:18px
+                    vertical-align:top   //图标和文字不对齐
+                    bg-image('brand')
+                    background-size: 30px 18px
+                    background-repeat:no-repeat
+                .name 
+                    margin-left: 6px
+                    font-size:16px
+                    font-weight: bold
+                    line-height:18px
+            .description 
+                font-size: 12px
+                line-height: 12px
+                margin-bottom: 10px
+            .support
+                .icon
+                    display: inline-block
+                    width: 12px
+                    height: 12px
+                    margin-right: 4px
+                    vertical-align:top
+                    background-size: 12px 12px
+                    background-repeat: no-repeat
+                    &.decrease
+                        bg-image('decrease_1')
+                    &.discount
+                        bg-image('discount_1')
+                    &.guarantee
+                        bg-image('guarantee_1')
+                    &.invoice
+                        bg-image('invoice_1')
+                    &.special
+                        bg-image('special_1')
+                .text
+                    line-height:12px
+                    font-size: 10px
+            .supports-count 
+                position: absolute
+                right: 12px
+                bottom: 10px
+                height:24px
+                line-height:24px
+                padding:0 8px
+                border-radius:12px
+                background-color:rgba(0, 0, 0, 0.2)
+                text-align: center
+                .count
+                    font-size: 10px
+                    vertical-align: top
+                .icon
+                    margin-left: 2px
+                    line-height:24px
+                    font-size:10px
+    .bulletin-wrapper
+        position:relative
+        height: 28px
+        line-height:28px
+        padding 0 22px 0 12px
+        background-color:rgba(7,17,27,0.2)
+        white-space: nowrap
+        overflow:hidden
+        text-overflow: ellipsis
+        .bulletin-title
+            display: inline-block
+            width:22px
+            height:12px
+            vertical-align:top
+            margin-top:8px
+            bg-image('bulletin')
+            background-size:22px 12px
+            background-repeat:no-repeat
+        .bulletin-text
+            margin:0 4px
+            vertical-align:top
+            font-size:10px
+            // 右箭头使用绝对定位
+        .icon 
+            position:absolute
+            font-size:10px
+            right:12px
+            top:0
+    .background
+        position: absolute
+        top: 0
+        left:0
+        width: 100%
+        height: 100%
+        z-index:-1
+        filter: blur(10px)
+    .detail
+        position:fixed
+        z-index:100
+        top:0
+        left:0
+        width:100%
+        height:100%
+        background:rgba(7,17,27,0.8)
+        &.fade-enter-active
+          animation: bounce-in .5s;
+        &.fade-leave-active
+          animation: bounce-out .5s;
+        @keyframes bounce-in {
+          0% {
+            transform: scale(0);
+          }
+          50% {
+            transform: scale(1.5);
+          }
+          100% {
+            transform: scale(1);
+          }
+        }
+        @keyframes bounce-out {
+          0% {
+            transform: scale(1);
+          }
+          50% {
+            transform: scale(1.5);
+          }
+          100% {
+            transform: scale(0);
+          }
+        }
+        // 还需要结合清除浮动
+        .detail-wrap
+            width:100%
+            min-height:100%
+            // 两个标签之间没有其他元素应该属于同级关系
+        .detail-main
+            margin-top: 64px
+            padding-bottom: 64px //撑开底部距离，给底部元素留有空间
+            .name
+                text-align:center
+                line-height:16px
+                font-size:16px
+                font-weight: 700
+            .star-wrapper
+                margin-top:16px
+                padding:2px 0
+                text-align: center
+            .title
+                display: flex
+                margin: 28px auto 24px auto
+                width:80%
+                .line
+                    flex:1
+                    position:relative
+                    top: -6px
+                    border-bottom:1px solid rgba(255,255,255,.2)
+                .text
+                    padding:0 12px
+                    font-size:14px
+                    font-weight:700
+            .supports
+                width:80%
+                margin:0 auto
+                .support-item
+                    padding:0 12px
+                    margin-bottom:12px
+                    font-size:0
+                    &:last-child
+                        margin-bottom:0
+                    .icon
+                        display: inline-block
+                        width:16px
+                        height:16px
+                        margin-right:6px
+                        vertical-align:top
+                        background-size:16px 16px
+                        background-repeat:no-repeat
+                        &.decrease
+                          bg-image('decrease_2')
+                        &.discount
+                          bg-image('discount_2')
+                        &.guarantee
+                          bg-image('guarantee_2')
+                        &.invoice
+                          bg-image('invoice_2')
+                        &.special
+                          bg-image('special_2')
+                    .text
+                        font-size:12px
+                        line-height:16px
+                        font-weight:200
+            .bulletin
+                width:80%
+                margin:0 auto
+                .content
+                    padding:0 12px
+                    line-height:24px
+                    font-weight:200
+        .detail-close
+            position: relative
+            width:32px
+            height:32px
+            font-size:32px
+            clear:both
+            margin:-64px auto 0 auto

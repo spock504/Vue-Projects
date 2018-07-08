@@ -1,7 +1,7 @@
 <template>
   <div>
     <!-- 头部 -->
-    <v-header></v-header>
+    <v-header :seller="seller"></v-header>
     <!-- 中部导航栏 -->
     <div class="tab border-1px">
         <div class="tab-item">
@@ -15,12 +15,18 @@
         </div>
     </div>
     <!-- 路由改变时，显示相应的内容 -->
-  <router-view></router-view>
+    <keep-alive>
+      <router-view :seller="seller"></router-view>
+    </keep-alive>
   </div>
 </template>
 
 <script>
 import VHeader from './components/header/header'
+import data from 'common/json/data.json';
+import {urlParse} from 'common/js/util';
+
+
 // 状态判断用常量定义，更有语义化
 const ERR_OK = 0
 
@@ -31,18 +37,26 @@ export default {
   },
   data(){
     return {
-      seller:{}
+      seller:{},
+      id: (() => {
+      let queryParam = urlParse();
+      console.log(queryParam);
+      return queryParam.id;
+    })()
     }
   },
   created(){
-    this.$http.get('./api/seller')
-        .then((res) => {
-          // console.log(res.json())
-          res = res.body
-          if (res.errno === ERR_OK) {
-            
-          }
-    })
+    // this.$http.get('./api/seller')
+    //     .then((res) => {
+    //       // console.log(res.json()) //json() 返回的是一個promise對象
+    //       res = res.body
+    //       if (res.errno === ERR_OK) {
+    //         this.seller = res.data
+    //         this.seller = Object.assign({},this.seller,res.data) //合并目标对象
+    //       }
+    // })
+    this.seller = data.seller
+    // console.log(this.seller)
   }
 };
 </script>

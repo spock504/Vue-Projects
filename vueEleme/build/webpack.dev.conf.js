@@ -1,12 +1,12 @@
 'use strict'
-const utils = require('./utils')
+const utils = require('./utils')  //工具方法 
 const webpack = require('webpack')
-const config = require('../config')
-const merge = require('webpack-merge')
+const config = require('../config') //配置文件
+const merge = require('webpack-merge') //合并配置文件
 const path = require('path')
 const baseWebpackConfig = require('./webpack.base.conf')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
-const HtmlWebpackPlugin = require('html-webpack-plugin')
+const HtmlWebpackPlugin = require('html-webpack-plugin')  // webpack 提供的操作html的插件
 const FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin')
 const portfinder = require('portfinder')
 
@@ -14,9 +14,10 @@ const HOST = process.env.HOST
 const PORT = process.env.PORT && Number(process.env.PORT)
 
 const devWebpackConfig = merge(baseWebpackConfig, {
+  // 相当于对独立的CSS和预处理文件做编译
   module: {
     rules: utils.styleLoaders({ sourceMap: config.dev.cssSourceMap, usePostCSS: true })
-  },
+  },  
   // cheap-module-eval-source-map is faster for development
   devtool: config.dev.devtool,
 
@@ -94,7 +95,7 @@ module.exports = new Promise((resolve, reject) => {
   })
 })
 // 数据获取
-var express = require('express') 
+var express = require('express')  // expresss 是nodejs框架
 var apiServer = express()  
 var bodyParser = require('body-parser')  
 apiServer.use(bodyParser.urlencoded({ extended: true }))  
