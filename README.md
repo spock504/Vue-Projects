@@ -1,6 +1,6 @@
 # Vue Item
+## vueStudyOne  
 ** PC端 **  
-## vueStudyOne
 > * 页面包括： 轮播图，支付框以及登录框等 
 > * 基本组件包括：单选框，多选框，下拉框，数量框等  
 
