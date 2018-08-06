@@ -1,12 +1,12 @@
 'use strict'
-const utils = require('./utils')  //工具方法 
+const utils = require('./utils')
 const webpack = require('webpack')
-const config = require('../config') //配置文件
-const merge = require('webpack-merge') //合并配置文件
+const config = require('../config')
+const merge = require('webpack-merge')
 const path = require('path')
 const baseWebpackConfig = require('./webpack.base.conf')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
-const HtmlWebpackPlugin = require('html-webpack-plugin')  // webpack 提供的操作html的插件
+const HtmlWebpackPlugin = require('html-webpack-plugin')
 const FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin')
 const portfinder = require('portfinder')
 
@@ -14,10 +14,9 @@ const HOST = process.env.HOST
 const PORT = process.env.PORT && Number(process.env.PORT)
 
 const devWebpackConfig = merge(baseWebpackConfig, {
-  // 相当于对独立的CSS和预处理文件做编译
   module: {
     rules: utils.styleLoaders({ sourceMap: config.dev.cssSourceMap, usePostCSS: true })
-  },  
+  },
   // cheap-module-eval-source-map is faster for development
   devtool: config.dev.devtool,
 
@@ -94,35 +93,3 @@ module.exports = new Promise((resolve, reject) => {
     }
   })
 })
-// 数据获取
-var express = require('express')  // express 是nodejs框架
-var apiServer = express()  
-var bodyParser = require('body-parser')  
-apiServer.use(bodyParser.urlencoded({ extended: true }))  
-apiServer.use(bodyParser.json())  
-var apiRouter = express.Router()  
-var fs = require('fs')  
-apiRouter.route('/:apiName') //接口路径  
-  .all(function (req, res) {  
-    fs.readFile('./db.json', 'utf8', function (err, data) {  //读取接口文件  
-      if (err) throw err  
-      var data = JSON.parse(data)  
-      if (data[req.params.apiName]) {  
-        res.json(data[req.params.apiName])  
-      }  
-      else {  
-        res.send('no such api name')  
-      }  
-  
-    })  
-  })  
-  
-// 数据所在的位置
-apiServer.use('/api', apiRouter);  
-apiServer.listen(3000, function (err) {  
-  if (err) {  
-    console.log(err)  
-    return  
-  }  
-  console.log('Listening at http://localhost:' + 3000 + '\n')  
-}) 

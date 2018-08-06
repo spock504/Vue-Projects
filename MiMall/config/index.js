@@ -1,4 +1,4 @@
-    'use strict'
+'use strict'
 // Template version: 1.3.1
 // see http://vuejs-templates.github.io/webpack for documentation.
 
@@ -8,11 +8,9 @@ module.exports = {
   dev: {
 
     // Paths
-    assetsSubDirectory: 'static', //被webpack编译处理过的资源文件都会在这个目录下
-    assetsPublicPath: '/',      //根目录
-    proxyTable: {
-        '/api': 'http://localhost:3000/'
-    },
+    assetsSubDirectory: 'static',
+    assetsPublicPath: '/',
+    proxyTable: {},
 
     // Various Dev Server settings
     host: 'localhost', // can be overwritten by process.env.HOST
@@ -43,7 +41,7 @@ module.exports = {
     index: path.resolve(__dirname, '../dist/index.html'),
 
     // Paths
-    assetsRoot: path.resolve(__dirname, '../dist'), //输出目录
+    assetsRoot: path.resolve(__dirname, '../dist'),
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
 
