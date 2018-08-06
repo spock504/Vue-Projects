@@ -10,6 +10,12 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin')
 const portfinder = require('portfinder')
 
+const express = require('express')
+const axios = require('axios')
+const app = express()
+const apiRouter = express.Router()
+app.use('/api',apiRouter)  //设置路由
+
 const HOST = process.env.HOST
 const PORT = process.env.PORT && Number(process.env.PORT)
 
@@ -42,6 +48,23 @@ const devWebpackConfig = merge(baseWebpackConfig, {
     quiet: true, // necessary for FriendlyErrorsPlugin
     watchOptions: {
       poll: config.dev.poll,
+    },
+    before(app) {
+      app.get('api/getGoodsList', function(req, res) {
+        const url = 'http://hotemotion.fun:3389/goods/list?page=0&pageSize=8&orderFlag=true&priceLevel=all'
+        axios.get(url, {
+          headers: {
+            referer: 'http://hotemotion.fun:3389/',
+            host: 'hotemotion.fun:3389'
+          },
+          params: req.query
+        }).then((response) => {
+          console.log('出来了')
+          res.json(response)
+        }).catch((e) => {
+          console.log(e)
+        })
+      })
     }
   },
   plugins: [
