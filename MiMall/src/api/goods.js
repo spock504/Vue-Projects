@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 export function getGoodsList() {
-  const url = '/api/getGoodsList'
+  const url = '/goods/list'
 
   const data = {
     page: 0,
@@ -13,9 +13,6 @@ export function getGoodsList() {
   return axios.get(url, {
     params:data
   }).then((res) => {
-    console.log(res)
     return Promise.resolve(res)
   })
 }
-
-export const ERR_OK = 1

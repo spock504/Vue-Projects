@@ -3,16 +3,22 @@
 </template>
 
 <script>
-import {getGoodsList, ERR_OK} from 'api/goods'
+import {getGoodsList} from 'api/goods'
 
 export default {
+  data() {
+    return {
+      goods : {}
+    }
+  },
   created() {
     this._getGoodsList()
   },
   methods: {
     _getGoodsList() {
       getGoodsList().then((res) => {
-        console.log(res)
+        this.goods = JSON.stringify(res.data)
+        console.log(this.goods)
       })
     }
   }
