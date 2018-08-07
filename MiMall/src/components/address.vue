@@ -1,5 +1,7 @@
 <template>
+  <div>
 <p>地址页面</p>
+</div>
 </template>
 
 <script>
