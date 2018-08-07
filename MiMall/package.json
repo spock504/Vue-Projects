@@ -15,6 +15,8 @@
     "babel-runtime": "^6.26.0",
     "fastclick": "^1.0.6",
     "vue": "^2.5.2",
+    "vue-infinite-scroll": "^2.0.2",
+    "vue-lazyload": "^1.2.6",
     "vue-router": "^3.0.1"
   },
   "devDependencies": {

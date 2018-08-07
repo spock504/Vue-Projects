@@ -1,13 +1,13 @@
 import axios from 'axios'
 
-export function getGoodsList() {
+export function getGoodsList(page, pageSize,orderFlag,priceLevel) {
   const url = '/goods/list'
 
   const data = {
-    page: 0,
-    pageSize: 8,
-    orderFlag: true,
-    priceLeave: 'All'
+    page,
+    pageSize,
+    orderFlag,
+    priceLevel
   }
 
   return axios.get(url, {
