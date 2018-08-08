@@ -19,19 +19,31 @@
           </div>
           <p class="good-name">{{item.productName}}</p>
           <p class="good-price">￥{{item.productPrice}}</p>
-          <div class="add-car">加入购物车</div>
+          <div class="add-car" @click="_addToCar(item.productId)">加入购物车</div>
         </div>
       </li>
     </ul>
     <div v-infinite-scroll="loadMore" infinite-scroll-disabled="busy" infinite-scroll-distance="30">
     <!-- 加载更多 -->
     </div>
+    <my-dialog :is-show="showAddCart" @on-close="closeCart()">
+      <div class="dialog-cart">
+        <p class="dialog-msg">加入购物车成功</p>
+        <div class="btn-contain">
+          <button class="cart-continue dialog-btn" @click="closeCart()">继续购物</button>
+          <router-link tag="button" to="car" class="cart-in dialog-btn">加入购物车</router-link>
+        </div>
+      </div>
+    </my-dialog>
   </div>
 </div>
 </template>
 
 <script>
 import {getGoodsList} from 'api/goods'
+import {addToCar} from 'api/addCar'
+import Dialog from './base/dialog'
+import store from './../store/store'
 
 export default {
   data() {
@@ -59,7 +71,8 @@ export default {
       pageSize: 8,
       orderFlag: true,
       priceLevel: 'all',
-      busy: true,
+      busy: false,
+      showAddCart: false,
     }
   },
   created() {
@@ -102,7 +115,27 @@ export default {
         this.page ++
         this._getGoodsList(true)
         }, 300)
+    },
+    _addToCar(productId) {
+      //post 提交数据
+        addToCar(productId).then((res) => {
+          //mmp, 这个状态码是字符串
+          if (res.data.status === '1') {
+            this.showAddCart = true
+            // 如果请求成功，数据存入store中
+            store.commit('updateCartCount', 1)
+            console.log()
+          } else {
+            this.showAddCart = false
+          }
+          })
+    },
+    closeCart() {
+      this.showAddCart = false
     }
+  },
+  components: {
+    MyDialog: Dialog
   }
 }
 
@@ -205,6 +238,29 @@ export default {
 }
 .goods-info li .add-car:hover {
   background-color: #e09195;
+}
+.dialog-cart {
+  text-align: center;
+}
+.dialog-cart .dialog-msg {
+  font-size:18px;
+  font-weight: 600;
+  margin-bottom: 40px;
+  color: #d94848;
+}
+.dialog-cart .btn-contain {
+  display: flex;
+  justify-content: center;
+}
+.dialog-cart .btn-contain .dialog-btn {
+  width: 30%;
+  height: 40px;
+  border: none;
+  background-color: #63a2e0;
+  color:#fff;
+}
+.dialog-cart .btn-contain .cart-continue {
+  margin-right: 20px;
 }
 
 </style>

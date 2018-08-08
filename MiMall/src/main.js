@@ -7,6 +7,7 @@ import router from './router'
 import fastclick from 'fastclick'
 import VueLazyLoad from 'vue-lazyload'
 import InfiniteScroll from 'vue-infinite-scroll'
+import store from './store/store'
 
 Vue.config.productionTip = false
 
@@ -21,6 +22,7 @@ Vue.use(InfiniteScroll)
 new Vue({
   el: '#app',
   router,
+  store,
   components: { App },
   template: '<App/>'
 })

@@ -5,7 +5,19 @@
 </template>
 
 <script>
-
+import axios from 'axios'
+export default {
+  created() {
+    this.getCarList()
+  },
+  methods: {
+    getCarList() {
+      axios.get('users/carList').then((res) => {
+        console.log(res)
+      })
+    }
+  }
+}
 </script>
 <style type="text/css">
 

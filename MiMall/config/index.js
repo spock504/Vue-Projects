@@ -14,7 +14,15 @@ module.exports = {
     '/goods/list': {
         target: 'http://hotemotion.fun:3389',
         changeOrigin: true
-      }
+      },
+    '/goods/addCar': {
+      target: 'http://hotemotion.fun:3389',
+      changeOrigin: true
+    },
+    'users/carList':{
+      target: 'http://hotemotion.fun:3389',
+      changeOrigin: true
+    }
     },
 
     // Various Dev Server settings

@@ -5,17 +5,20 @@
     <keep-alive>
       <router-view></router-view>
     </keep-alive>
+    <m-footer></m-footer>
   </div>
 </template>
 
 <script>
 import MHeader from 'components/m-header'
 import Tab from 'components/tab'
+import Footer from 'components/footer'
 
 export default {
   components: {
     MHeader,
-    Tab
+    Tab,
+    MFooter:Footer,
   }
 }
 </script>
