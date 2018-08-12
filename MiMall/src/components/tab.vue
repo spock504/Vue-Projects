@@ -1,8 +1,8 @@
 <template>
 <div class="tab">
   <ul class="tab-contain">
-    <li class="tab-item"><a href="/">主页</a></li>
-    <li class="tab-item"><a href="/">商品</a></li>
+    <li class="tab-item"><router-link  tag="a" to="/">主页</router-link></li>
+    <li class="tab-item"><router-link tag="a" to="/">商品</router-link></li>
   </ul>
 </div>
 </template>

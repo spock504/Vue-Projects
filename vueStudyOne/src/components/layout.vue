@@ -1,6 +1,6 @@
 <template>
   <!-- vue2.0中要有一个根节点 -->
-  <div>   
+  <div>
     <div class="app-head">
       <div class="app-head-inner">
         <!-- 支持用户在具有路由功能的应用中 (点击) 导航,to指定目标地址，每个页面的切换都可以回到主页 -->
@@ -76,10 +76,10 @@ export default {
       this.username = data.username
     },
     quit(){
-      
+
     }
   }
-}; 
+};
 </script>
 <!-- 全局样式 -->
 <style>
@@ -92,8 +92,8 @@ b, u, i, center,
 dl, dt, dd, ol, ul, li,
 fieldset, form, label, legend,
 table, caption, tbody, tfoot, thead, tr, th, td,
-article, aside, canvas, details, embed, 
-figure, figcaption, footer, header, hgroup, 
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
 menu, nav, output, ruby, section, summary,
 time, mark, audio, video {
   margin: 0;
@@ -104,7 +104,7 @@ time, mark, audio, video {
   vertical-align: baseline;
 }
 /* HTML5 display-role reset for older browsers */
-article, aside, details, figcaption, figure, 
+article, aside, details, figcaption, figure,
 footer, header, hgroup, menu, nav, section {
   display: block;
 }

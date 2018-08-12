@@ -8,3 +8,18 @@ export function addToCar(productId) {
     return Promise.resolve(res)
   })
 }
+
+export function editCartNum(Id, productNum, checked) {
+  const url = '/users/carEdit'
+  const data = {
+    Id,
+    productNum,
+    checked,
+  }
+
+  return axios.post(url, data).then((res) => {
+    return Promise.resolve(res)
+  })
+}
+
+export const ERR_OK = '0'

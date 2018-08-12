@@ -16,3 +16,5 @@ export function getGoodsList(page, pageSize,orderFlag,priceLevel) {
     return Promise.resolve(res)
   })
 }
+
+export const ERR_OK = '0'

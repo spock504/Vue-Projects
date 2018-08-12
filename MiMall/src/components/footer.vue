@@ -24,8 +24,9 @@
 </script>
 <style type="text/css">
 .footer {
+  margin-top: -100px;
   width: 100%;
-  height: 80px;
+  height: 100px;
   background-color: #bbb;
   overflow: hidden;
 }

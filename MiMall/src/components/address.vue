@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="address-page">
 <p>地址页面</p>
 </div>
 </template>

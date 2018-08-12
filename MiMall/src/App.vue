@@ -1,10 +1,14 @@
 <template>
   <div id="app">
-    <m-header></m-header>
-    <tab></tab>
-    <keep-alive>
-      <router-view></router-view>
-    </keep-alive>
+    <div class="content-wrap">
+      <div class="content">
+        <m-header></m-header>
+        <tab></tab>
+        <keep-alive>
+          <router-view></router-view>
+        </keep-alive>
+      </div>
+    </div>
     <m-footer></m-footer>
   </div>
 </template>
@@ -24,4 +28,13 @@ export default {
 </script>
 
 <style>
+#app {
+  height: 100%;
+}
+.content-wrap {
+  min-height: 100%;
+}
+.content {
+  padding-bottom: 100px;
+}
 </style>

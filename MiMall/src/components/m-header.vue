@@ -7,8 +7,8 @@
     <div class="sign">
         <p class="signin" v-if="showLoginOut" @click = "showLogin()">登录</p>
         <div class="signout" v-if="!showLoginOut">
-          <span class="sign-name">catName</span>
-          <span class="sign-out" @click="closeLoginOut">退出</span>
+          <span class="sign-name" v-text="userName"></span>
+          <span class="sign-out" @click="_getLogout">退出</span>
           <router-link to="/car" class="sign-car">购物车</router-link>
         </div>
     </div>
@@ -20,13 +20,13 @@
       <form>
         <div class="signin-name">
           <span class="name-icon icon">1</span>
-          <input type="input" name="username" placeholder="用户名" />
+          <input type="input" name="username" placeholder="用户名" v-model="userName"/>
         </div>
         <div class="signin-psd">
           <span class="pwd-icon icon">2</span>
-          <input type="password" name="password" placeholder="密码">
+          <input type="password" name="password" placeholder="密码" v-model="userPwd">
         </div>
-        <button type="text" class="signin-submit" @click="showSignout">登录</button>
+        <button type="button" class="signin-submit" @click="showSignout">登录</button>
       </form>
     </div>
   </my-dialog>
@@ -34,14 +34,22 @@
 </template>
 
 <script>
+import axios from 'axios'
 import Dialog from './base/dialog'
+import store from '../store/store'
 
 export default {
   data() {
     return {
       showLogDialog: false,
       showLoginOut : true,
+      userName:'',
+      userPwd:'',
     }
+  },
+  // 刷新的时候也检查登录状态
+  mounted() {
+    this._getCheckLogin()
   },
   methods: {
     closeDialog(attr) {
@@ -51,12 +59,53 @@ export default {
     showLogin() {
       this.showLogDialog = true
     },
-    showSignout() {
-      this.showLogDialog = false;
-      this.showLoginOut = false;
+    //检查登录状态
+    _getCheckLogin() {
+      axios.get('/users/checkLogin').then((res) => {
+        if (res.data.status == '0') {
+          this.showLoginOut = false
+          this.userName = res.data.result.userName
+          this.getCartList()
+        }
+      })
     },
-    closeLoginOut() {
-      this.showLoginOut = true
+    // 登出
+    _getLogout() {
+      axios.post('/users/logout').then((res) => {
+        if (res.data.status == '0') {
+          this.showLoginOut = true
+          this.userName = ''
+          this.userPwd = ''
+          store.commit('setCartCount', 0)
+        }
+      })
+    },
+    // 登入
+    showSignout() {
+      axios.post('/users/login',{
+        userName: this.userName,
+        userPwd: this.userPwd,
+      }).then((res) => {
+        if (res.data.status == '0') {
+          // console.log(res)
+          this.showLogDialog = false;
+          this.showLoginOut = false;
+        }
+      })
+    },
+    // 获得商品数据，存入store中
+    getCartList() {
+      axios.get('/users/carList').then((res) => {
+        if (res.data.status == '0') {
+          let cartCount = 0
+          const carList = res.data.result
+          carList.forEach((item) => {
+            cartCount += item.productNum
+            // console.log(cartCount)
+            store.commit('setCartCount', cartCount)
+          })
+        }
+      })
     }
   },
   components: {

@@ -35,6 +35,12 @@
         </div>
       </div>
     </my-dialog>
+    <my-dialog :is-show="showErrDialog" @on-close="closeErrDialog">
+      <div class="dialog-err">
+      <p class="dialog-errMsg"> 请先登录，否则无法加入购物车</p>
+      <button class="dialog-errBtn" @click="closeErrDialog">关闭</button>
+      </div>
+    </my-dialog>
   </div>
 </div>
 </template>
@@ -73,9 +79,10 @@ export default {
       priceLevel: 'all',
       busy: false,
       showAddCart: false,
+      showErrDialog: false,
     }
   },
-  created() {
+  mounted() {
     this._getGoodsList(false)
   },
   methods: {
@@ -118,20 +125,22 @@ export default {
     },
     _addToCar(productId) {
       //post 提交数据
-        addToCar(productId).then((res) => {
-          //mmp, 这个状态码是字符串
-          if (res.data.status === '1') {
-            this.showAddCart = true
-            // 如果请求成功，数据存入store中
-            store.commit('updateCartCount', 1)
-            console.log()
-          } else {
-            this.showAddCart = false
-          }
-          })
+      addToCar(productId).then((res) => {
+        //mmp, 这个状态码是字符串
+        if (res.data.status == '0') {
+          this.showAddCart = true
+          // 如果请求成功，数据存入store中
+          store.commit('updateCartCount', 1)
+        } else {
+          this.showErrDialog = true
+        }
+      })
     },
     closeCart() {
       this.showAddCart = false
+    },
+    closeErrDialog() {
+      this.showErrDialog = false
     }
   },
   components: {
@@ -261,6 +270,23 @@ export default {
 }
 .dialog-cart .btn-contain .cart-continue {
   margin-right: 20px;
+}
+.dialog-err {
+  text-align: center;
+}
+.dialog-err .dialog-errMsg {
+  font-size:18px;
+  font-weight: 600;
+  margin-bottom: 40px;
+  color: #d94848;
+}
+.dialog-err .dialog-errBtn {
+  width: 30%;
+  height: 40px;
+  border: none;
+  background-color: #63a2e0;
+  color:#fff;
+  cursor:pointer;
 }
 
 </style>
