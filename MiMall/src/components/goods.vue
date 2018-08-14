@@ -47,7 +47,7 @@
 
 <script>
 import {getGoodsList} from 'api/goods'
-import {addToCar} from 'api/addCar'
+import {addToCar} from 'api/goods'
 import Dialog from './base/dialog'
 import store from './../store/store'
 

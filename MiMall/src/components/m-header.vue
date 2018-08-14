@@ -9,7 +9,7 @@
         <div class="signout" v-if="!showLoginOut">
           <span class="sign-name" v-text="userName"></span>
           <span class="sign-out" @click="_getLogout">退出</span>
-          <router-link to="/car" class="sign-car">购物车</router-link>
+          <router-link to="/car" class="sign-car">购物车{{carCount}}</router-link>
         </div>
     </div>
   </div>
@@ -49,7 +49,12 @@ export default {
   },
   // 刷新的时候也检查登录状态
   mounted() {
-    this._getCheckLogin()
+    this._getCheckLogin();
+  },
+  computed: {
+    carCount() {
+      return store.state.cartCount
+    }
   },
   methods: {
     closeDialog(attr) {

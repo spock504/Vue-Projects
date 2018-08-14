@@ -86,3 +86,13 @@ body {
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
   background-color: #ffffff;
 }
+.clearfix::after {
+  content: '';
+  display: block;
+  clear: both;
+  height: 0;
+  visibility: hidden;
+}
+.clearfix::after {
+  *zoom: 1;
+}

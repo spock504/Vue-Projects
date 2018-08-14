@@ -17,4 +17,13 @@ export function getGoodsList(page, pageSize,orderFlag,priceLevel) {
   })
 }
 
+export function addToCar(productId) {
+  const url = '/goods/addCar'
+  return axios.post(url, {
+    productId
+  }).then((res) => {
+    return Promise.resolve(res)
+  })
+}
+
 export const ERR_OK = '0'

@@ -54,7 +54,7 @@
 
 <script>
 import axios from 'axios'
-import {editCartNum, ERR_OK} from 'api/addCar'
+import {editCartNum, ERR_OK} from 'api/users'
 import store from '../store/store'
 import MyDialog from './base/dialog'
 
@@ -148,7 +148,7 @@ export default {
       axios.post('/users/carDel', {
         productId: this.productId
       }).then((res) => {
-        if (res.status == '0') {
+        if (res.data.status == '0') {
           this.showDelDialog = false
           this.getCarList()
           store.commit('updateCartCount', -this.productNum)
@@ -181,7 +181,7 @@ export default {
   }
 }
 </script>
-<style type="text/css">
+<style type="text/css" scoped>
 .cart-page {
   padding:0 100px;
   box-sizing: border-box;
