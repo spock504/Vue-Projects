@@ -179,7 +179,7 @@ export default {
 }
 .signin-slot .signin-name input, .signin-slot .signin-psd input{
   width: 80%;
-  height:98%;
+  height:38px;
 }
 .signin-slot .icon{
   display: inline-block;

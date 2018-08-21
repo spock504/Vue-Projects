@@ -12,11 +12,11 @@ module.exports = {
     assetsPublicPath: '/',
     proxyTable: {
     '/goods/*': {
-        target: 'http://hotemotion.fun:3389',
+        target: 'http://linyijiu.cn:3000',
         changeOrigin: true
       },
     '/users/*':{
-      target: 'http://hotemotion.fun:3389',
+      target: 'http://linyijiu.cn:3000',
       changeOrigin: true
     }
     },
