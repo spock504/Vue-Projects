@@ -9,7 +9,7 @@ module.exports = {
 
     // Paths
     assetsSubDirectory: 'static', //被webpack编译处理过的资源文件都会在这个目录下
-    assetsPublicPath: '/',      //根目录
+    assetsPublicPath: './',      //根目录
     proxyTable: {
         '/api': 'http://localhost:3000/'
     },
@@ -22,7 +22,7 @@ module.exports = {
     notifyOnErrors: true,
     poll: false, // https://webpack.js.org/configuration/dev-server/#devserver-watchoptions-
 
-    
+
     /**
      * Source Maps
      */
