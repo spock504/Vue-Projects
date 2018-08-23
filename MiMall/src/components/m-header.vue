@@ -19,11 +19,11 @@
       <p class="signin-logo">登录：</p>
       <form>
         <div class="signin-name">
-          <span class="name-icon icon">1</span>
+          <span class="name-icon icon">账号：</span>
           <input type="input" name="username" placeholder="用户名" v-model="userName"/>
         </div>
         <div class="signin-psd">
-          <span class="pwd-icon icon">2</span>
+          <span class="pwd-icon icon">密码：</span>
           <input type="password" name="password" placeholder="密码" v-model="userPwd">
         </div>
         <button type="button" class="signin-submit" @click="showSignout">登录</button>
@@ -66,7 +66,7 @@ export default {
     },
     //检查登录状态
     _getCheckLogin() {
-      axios.get('/users/checkLogin').then((res) => {
+      axios.get('https://cors-anywhere.herokuapp.com/http://linyijiu.cn:3000/users/checkLogin').then((res) => {
         if (res.data.status == '0') {
           this.showLoginOut = false
           this.userName = res.data.result.userName
@@ -76,7 +76,7 @@ export default {
     },
     // 登出
     _getLogout() {
-      axios.post('/users/logout').then((res) => {
+      axios.post('https://cors-anywhere.herokuapp.com/http://linyijiu.cn:3000/users/logout').then((res) => {
         if (res.data.status == '0') {
           this.showLoginOut = true
           this.userName = ''
@@ -87,7 +87,7 @@ export default {
     },
     // 登入
     showSignout() {
-      axios.post('/users/login',{
+      axios.post('https://cors-anywhere.herokuapp.com/http://linyijiu.cn:3000/users/login',{
         userName: this.userName,
         userPwd: this.userPwd,
       }).then((res) => {
@@ -100,7 +100,7 @@ export default {
     },
     // 获得商品数据，存入store中
     getCartList() {
-      axios.get('/users/carList').then((res) => {
+      axios.get('https://cors-anywhere.herokuapp.com/http://linyijiu.cn:3000/users/carList').then((res) => {
         if (res.data.status == '0') {
           let cartCount = 0
           const carList = res.data.result

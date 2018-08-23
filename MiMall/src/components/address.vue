@@ -59,7 +59,7 @@ export default {
   },
   methods: {
     getAddressList() {
-      axios.get('/users/addressList').then((res) => {
+      axios.get('https://cors-anywhere.herokuapp.com/http://linyijiu.cn:3000/users/addressList').then((res) => {
         this.addressList = res.data.result
         console.log(res.data)
       })

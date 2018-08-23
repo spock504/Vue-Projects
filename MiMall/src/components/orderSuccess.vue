@@ -47,7 +47,7 @@ export default {
   methods: {
   getOrderTotal() {
     this.orderId = this.$route.query.orderId
-    axios.get('/users/getOrderTotal', {
+    axios.get('https://cors-anywhere.herokuapp.com/http://linyijiu.cn:3000/users/getOrderTotal', {
       params: {orderId: this.orderId}
       }).then((res) => {
         if (res.data.status == '0') {

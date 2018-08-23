@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 export function editCartNum(Id, productNum, checked) {
-  const url = '/users/carEdit'
+  const url = 'https://cors-anywhere.herokuapp.com/http://linyijiu.cn:3000/users/carEdit'
   const data = {
     Id,
     productNum,
@@ -14,7 +14,7 @@ export function editCartNum(Id, productNum, checked) {
 }
 
 export function payMent(productList, addressId, orderTotal, shipping, discount) {
-  const url = '/users/payMent'
+  const url = 'https://cors-anywhere.herokuapp.com/http://linyijiu.cn:3000/users/payMent'
 
   const data = {
     productList,

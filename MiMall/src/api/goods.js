@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 export function getGoodsList(page, pageSize,orderFlag,priceLevel) {
-  const url = '/goods/list'
+  const url = 'https://cors-anywhere.herokuapp.com/http://linyijiu.cn:3000/goods/list'
 
   const data = {
     page,
@@ -18,7 +18,7 @@ export function getGoodsList(page, pageSize,orderFlag,priceLevel) {
 }
 
 export function addToCar(productId) {
-  const url = '/goods/addCar'
+  const url = 'https://cors-anywhere.herokuapp.com/http://linyijiu.cn:3000/goods/addCar'
   return axios.post(url, {
     productId
   }).then((res) => {

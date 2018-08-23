@@ -105,7 +105,7 @@ export default {
   },
   methods: {
     getCarList() {
-      axios.get('users/carList').then((res) => {
+      axios.get('https://cors-anywhere.herokuapp.com/http://linyijiu.cn:3000/users/carList').then((res) => {
         if (res.data.status == ERR_OK) {
         this.cartList = res.data.result
         console.log(res.data.result)
@@ -145,7 +145,7 @@ export default {
       this.showDelDialog = false
     },
     delItem() {
-      axios.post('/users/carDel', {
+      axios.post('https://cors-anywhere.herokuapp.com/http://linyijiu.cn:3000/users/carDel', {
         productId: this.productId
       }).then((res) => {
         if (res.data.status == '0') {
@@ -160,7 +160,7 @@ export default {
       this.cartList.forEach((item) => {
         item.checked = flag ? '1' : '0'
       })
-      axios.post('/users/carCheckAll',{
+      axios.post('https://cors-anywhere.herokuapp.com/http://linyijiu.cn:3000/users/carCheckAll',{
         checked: flag? '1' :'0'
       }).then((res) => {
         if(res.status == ERR_OK) {

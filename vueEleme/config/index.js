@@ -9,7 +9,7 @@ module.exports = {
 
     // Paths
     assetsSubDirectory: 'static', //被webpack编译处理过的资源文件都会在这个目录下
-    assetsPublicPath: './',      //根目录
+    assetsPublicPath: '/',      //根目录
     proxyTable: {
         '/api': 'http://localhost:3000/'
     },
@@ -45,7 +45,7 @@ module.exports = {
     // Paths
     assetsRoot: path.resolve(__dirname, '../dist'), //输出目录
     assetsSubDirectory: 'static',
-    assetsPublicPath: '/',
+    assetsPublicPath: './',
 
     /**
      * Source Maps

@@ -102,7 +102,7 @@ export default {
   },
   methods: {
     getCarList() {
-      axios.get('users/carList').then((res) => {
+      axios.get('https://cors-anywhere.herokuapp.com/http://linyijiu.cn:3000/users/carList').then((res) => {
         if (res.data.status == ERR_OK) {
         this.productList = res.data.result
         }

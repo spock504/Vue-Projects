@@ -31,7 +31,7 @@
         <p class="dialog-msg">加入购物车成功</p>
         <div class="btn-contain">
           <button class="cart-continue dialog-btn" @click="closeCart()">继续购物</button>
-          <router-link tag="button" to="car" class="cart-in dialog-btn">加入购物车</router-link>
+          <router-link tag="button" to="car" class="cart-in dialog-btn" @click="closeCart()">加入购物车</router-link>
         </div>
       </div>
     </my-dialog>
