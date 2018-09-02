@@ -90,9 +90,9 @@ export default {
       }
     },
     selectItem(item) {
-      this.$router.push({
-        path: `/recommend/${item.dissid}`
-      })
+      // this.$router.push({
+      //   path: `/recommend/${item.dissid}`
+      // })
       this.setDisc(item)
     },
     ...mapMutations({

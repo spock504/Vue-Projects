@@ -33,7 +33,7 @@ export default {
   },
   created() {
     this._getDetail()
-    console.log(this.singer)
+    // console.log(this.singer)
   },
   methods: {
     _getDetail() {
@@ -44,7 +44,7 @@ export default {
       getSingerDetail(this.singer.id).then((res) => {
         if (res.code === ERR_OK) {
           this.songs = this._normalizeSongs(res.data.list)
-          console.log(this.songs)
+          // console.log(this.songs)
         }
       })
     },
@@ -53,7 +53,7 @@ export default {
       list.forEach((item) => {
         let {musicData} = item
         getSongVkey(musicData.songmid).then((res) => {
-          console.log('得到vkey')
+          // console.log('得到vkey')
           const vkey = res.data.items[0].vkey
           if (musicData.songid && musicData.albummid) {
             ret.push(createSong(musicData, vkey))

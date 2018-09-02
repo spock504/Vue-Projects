@@ -20,7 +20,7 @@ export default {
   },
   methods: {
     switchItem(index) {
-      this.$emit('switch', index)
+      // this.$emit('switch', index)
     }
   }
 }

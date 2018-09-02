@@ -124,7 +124,7 @@ export default {
         if (-newY >= height1 && -newY < height2) {
           this.currentIndex = i
           this.diff = height2 + newY
-          console.log(newY)
+          // console.log(newY)
           return
         }
       }
