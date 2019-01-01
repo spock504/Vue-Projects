@@ -137,10 +137,11 @@ body {
   color: #444;
 }
 .app-head {
-  background: #363636;
+  background: #ffffff;
+  box-shadow:0 1px 3px rgba(26, 26, 26, 0.1);
   color: #b2b2b2;
-  height: 90px;
-  line-height: 90px;
+  height: 55px;
+  line-height: 55px;
   width: 100%;
 }
 .app-head-inner {
@@ -149,7 +150,7 @@ body {
 }
 .app-head-inner img {
   width:50px;
-  margin-top:20px;
+  /*margin-top:20px;*/
 }
 .app-head-inner .nav-list {
   float:right;
