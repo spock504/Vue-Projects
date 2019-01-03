@@ -3,10 +3,19 @@
   <div>
     <div class="app-head">
       <div class="app-head-inner">
-        <!-- 支持用户在具有路由功能的应用中 (点击) 导航,to指定目标地址，每个页面的切换都可以回到主页 -->
-        <router-link :to="{path:'/'}">
-          <img src="../assets/logo.png">
-        </router-link>
+        <ul class="nav-header">
+            <li>
+              <!-- 支持用户在具有路由功能的应用中 (点击) 导航,to指定目标地址，每个页面的切换都可以回到主页 -->
+              <router-link :to="{path:'/'}">
+                <img src="../assets/logo.png">
+              </router-link>
+            </li>
+            <li>首页</li>
+            <li>分类</li>
+            <li>
+                <Input icon="ios-clock-outline" placeholder="请输入..." style="width: 200px"></Input>
+            </li>
+        </ul>
         <ul class="nav-list">
           <li> {{ username }}</li>
           <li v-if="username ===''" @click="logClick">登录</li>
@@ -23,7 +32,7 @@
         <router-view></router-view>
     </div>
     <div class="app-footer">
-      <p>&copy; 2018 spock504</p>
+      <p>&copy; 2018 super community</p>
     </div>
     <!-- 三个my-dialog 插件控制三个不同的弹窗，父组件绑定is-show属性传递给子组件，并且根据值判断弹窗是否展示 -->
     <my-dialog :is-show="isShowAboutDialog" @on-close="closeDialog('isShowAboutDialog')">
@@ -43,6 +52,7 @@
 import Dialog from "./base/dialog"
 import LogForm from "./logForm"
 import RegForm from "./regForm"
+
 
 export default {
   components:{
@@ -152,6 +162,15 @@ body {
   width:50px;
   /*margin-top:20px;*/
 }
+.app-head-inner .nav-header {
+  float: left;
+  overflow: hidden;
+}
+.app-head-inner .nav-header li {
+  float:left;
+  cursor : pointer;
+  padding: 0 10px;
+}
 .app-head-inner .nav-list {
   float:right;
   overflow:hidden;
@@ -160,6 +179,9 @@ body {
   float:left;
   cursor : pointer;
   padding: 0 10px;
+}
+.ivu-input-group {
+  top: 10px;
 }
 .app-footer {
   width: 100%;

@@ -4,6 +4,9 @@ import Vue from 'vue'
 import Layout from './components/layout.vue'
 import VueRouter from 'vue-router'
 import VueResource from 'vue-resource'
+import iView from 'iview';
+import 'iview/dist/styles/iview.css';    // 使用 CSS
+
 
 import IndexPage from './pages/index'
 import Detail from './pages/detail'
@@ -16,6 +19,8 @@ import OrderListPage from './pages/orderList'
 
 Vue.use(VueRouter); //路由管理
 Vue.use(VueResource);   //模拟后台数据处理
+Vue.use(iView);
+
 
 let router = new VueRouter({
   // 这种模式充分利用 history.pushState API 来完成 URL 跳转而无须重新加载页面。
@@ -23,7 +28,7 @@ let router = new VueRouter({
     routes: [
         {
             path: '/',
-            component: IndexPage 
+            component: IndexPage
         },
         {
             path: '/orderlist',
@@ -58,6 +63,5 @@ let router = new VueRouter({
 new Vue({
   el: '#app',
   router,           //路由要在实例中注册
-  components: { Layout },
-  template: '<Layout/>'
+  render: h => h(Layout),
 })

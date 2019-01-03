@@ -10,6 +10,6 @@
 - [x]  构建工具：webpack 2.0
 - [x]  源码：es6
 
-建议删除package-lock.json文件再安装. --!it has some unexpected problem. I dont konw.
+建议删除package-lock.json文件再安装.It has some unexpected problem. I dont konw.
 
 
