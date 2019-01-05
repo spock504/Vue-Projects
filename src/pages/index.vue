@@ -1,7 +1,59 @@
 <template>
     <div class="index-wrap">
         <div class="index-left">
-            <div class="index-left-block">
+          <slide-show :slides="slides" :inv="slideSpeed" @onchange="doSomethingOnSlideChange"></slide-show>
+          <Menu mode="horizontal" :theme="theme1" active-name="1">
+            <MenuItem name="1">
+                <Icon type="ios-paper"></Icon>
+                推荐
+            </MenuItem>
+            <MenuItem name="2">
+                <Icon type="ios-people"></Icon>
+                关注
+            </MenuItem>
+            <MenuItem name="3">
+                <Icon type="settings"></Icon>
+                设置
+            </MenuItem>
+          </Menu>
+
+            <!-- <div class="index-board-list"> -->
+              <!-- class类的拼接 ，根据index设置最后一行边距为0,并且设置不同的背景图-->
+<!--                 <div class="index-board-item"
+                v-for="(item,index) in boardList"
+                :class="[{'line-last':index % 2 !== 0},'index-board-'+item.id]">
+                    <div class="index-board-item-inner">
+                        <h2>{{item.title}}</h2>
+                        <p>{{item.description}}</p>
+                        <div class="index-board-button">
+                            <a href="" class="button">立即购买</a>
+                        </div>
+                    </div>
+                </div>
+            </div> -->
+      </div>
+
+      <div class="index-right">
+            <Card style="width:280px">
+        <p slot="title">
+            <Icon type="ios-film-outline"></Icon>
+            写文章
+        </p>
+        <a href="#" slot="extra" @click.prevent="changeLimit">
+            <Icon type="ios-loop-strong"></Icon>
+            Change
+        </a>
+        <ul>
+            <li v-for="item in randomMovieList">
+                <a :href="item.url" target="_blank">{{ item.name }}</a>
+                <span>
+                    <Icon type="ios-star" v-for="n in 4" :key="n"></Icon><Icon type="ios-star" v-if="item.rate >= 9.5"></Icon><Icon type="ios-star-half" v-else></Icon>
+                    {{ item.rate }}
+                </span>
+            </li>
+        </ul>
+    </Card>
+<!--             <div class="index-left-block">
                 <h2>全部产品</h2>
                 <div v-for="product in productList">
                     <h3>{{ product.title}}</h3>
@@ -21,26 +73,7 @@
                     <a :href="item.url" class="new-item">{{item.name}}</a>
                 </li>
             </ul>
-        </div>
-      </div>
-
-      <div class="index-right">
-        <slide-show :slides="slides" :inv="slideSpeed" @onchange="doSomethingOnSlideChange"></slide-show>
-
-        <div class="index-board-list">
-          <!-- class类的拼接 ，根据index设置最后一行边距为0,并且设置不同的背景图-->
-            <div class="index-board-item" 
-            v-for="(item,index) in boardList"
-            :class="[{'line-last':index % 2 !== 0},'index-board-'+item.id]">
-                <div class="index-board-item-inner">
-                    <h2>{{item.title}}</h2>
-                    <p>{{item.description}}</p>
-                    <div class="index-board-button">
-                        <a href="" class="button">立即购买</a>
-                    </div>
-                </div>
-            </div>
-        </div>
+        </div> -->
     </div>
     </div>
 </template>
@@ -51,44 +84,29 @@ import slideShow from '../components/slideShow'
         components:{
             slideShow
         },
-        // 页面创建成功就向数据取值
-        created(){
-            this.$http.get('api/getNewList')
-            .then((res) =>{
-              // console.log(res)
-                this.newList = res.data
-            },(err) => {
-                console.log(err);
-            })
-        },
-        methods:{
-            doSomethingOnSlideChange(){
-                // console.log("doSomethingOnSlideChange翻页了")
-            }
-        },
-        data () {
+                data () {
             return {
                 slideSpeed:2000,
                 slides:[
                 // script中的src需要使用require通过weboack解析地址
                 {
                   src: require('../assets/slideShow/pic1.jpg'),
-                  title: 'xxx1',
+                  title: '打上花火',
                   href: 'detail/count'
                 },
                 {
                   src: require('../assets/slideShow/pic2.jpg'),
-                  title: 'xxx2',
+                  title: '知否知否',
                   href: 'detail/forecast'
                 },
                 {
                   src: require('../assets/slideShow/pic3.jpg'),
-                  title: 'xxx3',
+                  title: '纸短情长',
                   href: 'detail/analysis'
                 },
                 {
                   src: require('../assets/slideShow/pic4.jpg'),
-                  title: 'xxx4',
+                  title: '烟花易冷',
                   href: 'detail/publish'
                 }],
                   boardList: [
@@ -168,9 +186,99 @@ import slideShow from '../components/slideShow'
                         }
                         ]
                     }
-                }
+                },
+                theme1:'light',
+                movieList: [
+                    {
+                        name: 'The Shawshank Redemption',
+                        url: 'https://movie.douban.com/subject/1292052/',
+                        rate: 9.6
+                    },
+                    {
+                        name: 'Leon:The Professional',
+                        url: 'https://movie.douban.com/subject/1295644/',
+                        rate: 9.4
+                    },
+                    {
+                        name: 'Farewell to My',
+                        url: 'https://movie.douban.com/subject/1291546/',
+                        rate: 9.5
+                    },
+                    {
+                        name: 'Forrest Gump',
+                        url: 'https://movie.douban.com/subject/1292720/',
+                        rate: 9.4
+                    },
+                    {
+                        name: 'Life Is Beautiful',
+                        url: 'https://movie.douban.com/subject/1292063/',
+                        rate: 9.5
+                    },
+                    {
+                        name: 'Spirited Away',
+                        url: 'https://movie.douban.com/subject/1291561/',
+                        rate: 9.2
+                    },
+                    {
+                        name: 'Schindlers List',
+                        url: 'https://movie.douban.com/subject/1295124/',
+                        rate: 9.4
+                    },
+                    {
+                        name: 'The Legend of 1900',
+                        url: 'https://movie.douban.com/subject/1292001/',
+                        rate: 9.2
+                    },
+                    {
+                        name: 'WALL·E',
+                        url: 'https://movie.douban.com/subject/2131459/',
+                        rate: 9.3
+                    },
+                    {
+                        name: 'Inception',
+                        url: 'https://movie.douban.com/subject/3541415/',
+                        rate: 9.2
+                    }
+                ],
+                randomMovieList: []
             }
-        }
+        },
+        // 页面创建成功就向数据取值
+        created(){
+            this.$http.get('api/getNewList')
+            .then((res) =>{
+              // console.log(res)
+                this.newList = res.data
+            },(err) => {
+                console.log(err);
+            });
+            this.changeLimit();
+        },
+        methods:{
+            doSomethingOnSlideChange(){
+                // console.log("doSomethingOnSlideChange翻页了")
+            },
+            changeLimit () {
+                function getArrayItems(arr, num) {
+                    const temp_array = [];
+                    for (let index in arr) {
+                        temp_array.push(arr[index]);
+                    }
+                    const return_array = [];
+                    for (let i = 0; i<num; i++) {
+                        if (temp_array.length>0) {
+                            const arrIndex = Math.floor(Math.random()*temp_array.length);
+                            return_array[i] = temp_array[arrIndex];
+                            temp_array.splice(arrIndex, 1);
+                        } else {
+                            break;
+                        }
+                    }
+                    return return_array;
+                }
+                this.randomMovieList = getArrayItems(this.movieList, 5);
+            }
+        },
     };
 </script>
 
@@ -182,12 +290,14 @@ import slideShow from '../components/slideShow'
 }
 .index-left {
     float:left;
-    width:300px;
+    width:900px;
     text-align:left;
+    overflow: hidden;
 }
 .index-right {
-  float: left;
-  width: 900px;
+  margin-top: 12px;
+  float: right;
+  width: 280px;
 }
 .index-left-block {
   margin: 15px;
@@ -224,7 +334,7 @@ import slideShow from '../components/slideShow'
   background: #fff;
   box-shadow: 0 0 1px #ddd;
   padding: 20px;
-  margin-right: 20px;
+  margin-left: 20px;
   margin-bottom: 20px;
 }
 .index-board-item-inner {

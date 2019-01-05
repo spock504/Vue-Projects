@@ -12,7 +12,7 @@
             </a>
         </div>
         <h2>{{ slides[nowIndex].title }}</h2>
-        <ul class="slide-pages"> 
+        <ul class="slide-pages">
             <li @click='goto(prevIndex)'>&lt;</li>
             <li v-for='(item, index) in slides' @click='goto(index)'>
                 <a :class="{on : index === nowIndex}">{{index+1}}</a>
@@ -101,7 +101,7 @@ export  default {
 
 .slide-show {
     width: 900px;
-    height: 500px;
+    height: 300px;
     overflow: hidden;
     position: relative;
     margin: 15px 15px 15px 0;
@@ -111,6 +111,7 @@ export  default {
 }
 .slide-img img {
     width: 100%;
+    height:100%;
     position: absolute;
     top: 0;
 }

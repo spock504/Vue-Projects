@@ -10,10 +10,14 @@
                 <img src="../assets/logo.png">
               </router-link>
             </li>
-            <li>首页</li>
+            <li style="color: #007fff">
+              <router-link :to="{path:'/'}">
+                首页
+              </router-link>
+            </li>
             <li>分类</li>
             <li>
-                <Input icon="ios-clock-outline" placeholder="请输入..." style="width: 200px"></Input>
+                <Input icon="ios-search" placeholder="请输入..." style="width: 200px"></Input>
             </li>
         </ul>
         <ul class="nav-list">
@@ -22,8 +26,8 @@
           <li class="nav-pile">|</li>
           <li v-if="username !==''" @click="quit">退出</li>
           <li v-if="username ===''" @click="regClick">注册</li>
-          <li class="nav-pile">|</li>
-          <li @click="aboutClick">关于</li>
+<!--           <li class="nav-pile">|</li>
+          <li @click="aboutClick">关于</li> -->
         </ul>
       </div>
     </div>
@@ -35,10 +39,10 @@
       <p>&copy; 2018 super community</p>
     </div>
     <!-- 三个my-dialog 插件控制三个不同的弹窗，父组件绑定is-show属性传递给子组件，并且根据值判断弹窗是否展示 -->
-    <my-dialog :is-show="isShowAboutDialog" @on-close="closeDialog('isShowAboutDialog')">
+<!--     <my-dialog :is-show="isShowAboutDialog" @on-close="closeDialog('isShowAboutDialog')">
       <p>关于有很多话</p>
     </my-dialog>
-    <my-dialog :is-show="isShowLogDialog" @on-close="closeDialog('isShowLogDialog')">
+ --> <my-dialog :is-show="isShowLogDialog" @on-close="closeDialog('isShowLogDialog')">
       <!-- 插槽有传递has-log事件出来，并且携带相应的值,可作为该函数的参数-->
       <log-form @has-log="onSuccessLog"></log-form>
     </my-dialog>
@@ -62,16 +66,16 @@ export default {
   },
   data () {
     return {
-      isShowAboutDialog:false,
+      // isShowAboutDialog:false,
       isShowLogDialog:false,
       isShowRegDialog:false,
       username:''
     }
   },
   methods:{
-    aboutClick(){
-      this.isShowAboutDialog = true
-    },
+    // aboutClick(){
+    //   this.isShowAboutDialog = true
+    // },
     logClick(){
       this.isShowLogDialog=true
     },
@@ -150,8 +154,8 @@ body {
   background: #ffffff;
   box-shadow:0 1px 3px rgba(26, 26, 26, 0.1);
   color: #b2b2b2;
-  height: 55px;
-  line-height: 55px;
+  height: 65px;
+  line-height: 65px;
   width: 100%;
 }
 .app-head-inner {
@@ -160,7 +164,7 @@ body {
 }
 .app-head-inner img {
   width:50px;
-  /*margin-top:20px;*/
+  margin-top:5px;
 }
 .app-head-inner .nav-header {
   float: left;
@@ -174,6 +178,7 @@ body {
 .app-head-inner .nav-list {
   float:right;
   overflow:hidden;
+  color: #007fff;
 }
 .nav-list li {
   float:left;
@@ -185,8 +190,8 @@ body {
 }
 .app-footer {
   width: 100%;
-  height: 80px;
-  line-height: 80px;
+  height: 70px;
+  line-height: 70px;
   text-align: center;
   background-color: #e3e4e8;
   margin-top: 30px;

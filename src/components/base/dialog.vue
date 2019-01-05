@@ -1,6 +1,6 @@
 <template>
   <!-- 设计弹窗的框架样式，再利用slot插槽插进不同的内容 -->
-  <div> 
+  <div>
     <div class="dialog-wrap">
         <div class="dialog-cover" v-if="isShow" @click="closeMyself"></div>
 <!-- 动画效果 -->
@@ -8,8 +8,8 @@
         <div class="dialog-content" v-if="isShow">
           <p class="dialog-close" @click="closeMyself">X</p>
           <!-- 插槽的位置 -->
-          <slot>hello</slot>
-        </div>    
+          <slot></slot>
+        </div>
       </transition>
 
     </div>
@@ -52,6 +52,7 @@ export default　{
   position: fixed;
   width: 100%;
   height: 100%;
+  z-index: 999;
 }
 .dialog-cover {
   background: #000;
@@ -64,27 +65,27 @@ export default　{
   height: 100%;
 }
 .dialog-content {
-  width: 50%;
+  width: 340px;
   position: fixed;
-  max-height: 50%;
   overflow: auto;
   background: #fff;
-  top: 20%;
+  top: 16%;
   left: 50%;
-  margin-left: -25%;
+  margin-left: -150px;
   z-index: 10;
-  border: 2px solid #464068;
-  padding: 2%;
+  padding:5% 2%;
   line-height: 1.6;
+  border-radius: 15px;
 }
 .dialog-close {
   position: absolute;
-  right: 5px;
-  top: 5px;
+  right: 10px;
+  top: 10px;
   width: 20px;
   height: 20px;
   text-align: center;
   cursor: pointer;
+  color: #b2b2b2;
 }
 .dialog-close:hover {
   color: #4fc08d;

@@ -3,30 +3,33 @@
     <div class="g-form">
 
       <div class="g-form-line">
-        <span class="g-form-label">用户名：</span>
-        <div class="g-form-input">
+        <!-- <span class="g-form-label">用户名：</span> -->
+        <!-- <div class="g-form-input"> -->
           <!-- 绑定用户的输入值，并且跟条件去匹配 -->
-          <input type="text" 
-          v-model="usernameModel" placeholder="请输入用户名">
-        </div>
+          <Input v-model="usernameModel" placeholder="请输入用户名" style="width: 260px"></Input>
+          <!-- <input type="text" v-model="usernameModel" placeholder="请输入用户名"> -->
+        <!-- </div> -->
         <span class="g-form-error">{{ userErrors.errorText }}</span>
       </div>
 
       <div class="g-form-line">
-        <span class="g-form-label">密码：</span>
-        <div class="g-form-input">
-          <input type="password" 
-          v-model="passwordModel" placeholder="请输入密码">
-        </div>
+        <!-- <span class="g-form-label">密码：</span> -->
+        <Input v-model="passwordModel" placeholder="请输入密码" style="width: 260px"></Input>
+        <!-- <div class="g-form-input"> -->
+          <!-- <input type="password" -->
+          <!-- v-model="passwordModel" placeholder="请输入密码"> -->
+        <!-- </div> -->
         <span class="g-form-error">{{ passwordErrors.errorText }}</span>
       </div>
 
       <div class="g-form-line">
-        <div class="g-form-btn">
-          <a class="button" @click="onLogin">登录</a>
-        </div>
+        <Button type="primary" @click="onLogin" shape="circle" size="large" style="width: 260px;margin-top:20px;">登录</Button>
+
+        <!-- <div class="g-form-btn"> -->
+          <!-- <a class="button" @click="onLogin">登录</a> -->
+        <!-- </div> -->
       </div>
-      <p>{{ errorText }}</p>
+      <p style="margin-left:15px;">{{ errorText }}</p>
 
     </div>
   </div>
@@ -88,7 +91,7 @@ export default {
     onLogin () {
       // 判断两者的输入状态
       if (!this.userErrors.status || !this.passwordErrors.status) {
-        this.errorText = '部分选项未通过'
+        this.errorText = '用户名或密码错误'
       }
       else {
         this.errorText = ''
@@ -109,9 +112,10 @@ export default {
 
 <style scoped>
 .g-form-line{
-  width:500px;
+  /* width:500px; */
   overflow:hidden;
   margin-bottom:20px;
+  text-align: center;
 }
 .g-form-label {
   width:80px;
@@ -124,14 +128,15 @@ export default {
 .g-form-error {
   float:left;
   color:#red;
+  margin-left: 15px;
 }
 .g-form-btn{
-    width:50px;
-    height:30px;
-    line-height:30px;
-    text-align:center;
-    color:#fff;
-    background-color:#4fc08d;
-    cursor:pointer;
+  width:50px;
+  height:30px;
+  line-height:30px;
+  text-align:center;
+  color:#fff;
+  background-color:#4fc08d;
+  cursor:pointer;
 }
 </style>
