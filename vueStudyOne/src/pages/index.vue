@@ -53,13 +53,33 @@ import slideShow from '../components/slideShow'
         },
         // 页面创建成功就向数据取值
         created(){
-            this.$http.get('api/getNewList')
-            .then((res) =>{
-              // console.log(res)
-                this.newList = res.data
-            },(err) => {
-                console.log(err);
-            })
+            // this.$http.get('api/getNewList')
+            // .then((res) =>{
+            //     this.newList = res.data
+            // },(err) => {
+            //     console.log(err);
+            // })
+            this.newList = [{
+              "id": 1,
+              "name": "巴拉巴拉叭叭叭粑粑啦啦啦巴拉巴拉啦",
+              "url": "/"
+            },
+            {
+              "id": 2,
+              "name": "哔哩哔哩哔哩哔哩bilibili哔哩哔哩bilibili",
+              "url": "/"
+            },
+            {
+              "id": 3,
+              "name": "淅沥淅沥",
+              "url": "/",
+              "hot": true
+            },
+            {
+              "id": 4,
+              "name": "咕力咕力",
+              "url": "/"
+            }]
         },
         methods:{
             doSomethingOnSlideChange(){
@@ -128,20 +148,20 @@ import slideShow from '../components/slideShow'
                         list:[
                         {
                           name: '数据统计',
-                          url: 'http://starcraft.com'
+                          url: '/'
                         },
                         {
                           name: '数据预测',
-                          url: 'http://warcraft.com'
+                          url: '/'
                         },
                         {
                           name: '流量分析',
-                          url: 'http://overwatch.com',
+                          url: '/',
                           hot: true
                         },
                         {
                           name: '广告发布',
-                          url: 'http://hearstone.com'
+                          url: '/'
                         }
                         ]
                     },
@@ -151,20 +171,20 @@ import slideShow from '../components/slideShow'
                         list:[
                         {
                           name: '91助手',
-                          url: 'http://weixin.com'
+                          url: '/'
                         },
                         {
                           name: '产品助手',
-                          url: 'http://twitter.com',
+                          url: '/',
                           hot: true
                         },
                         {
                           name: '智能地图',
-                          url: 'http://maps.com'
+                          url: '/'
                         },
                         {
                           name: '团队语音',
-                          url: 'http://phone.com'
+                          url: '/'
                         }
                         ]
                     }

@@ -16,7 +16,7 @@ Vue.use(VueResource)
 const routes = [
         {
           path:'/',
-          redirect:"goods"
+          redirect:"/goods"
         },
         {
           path:'/goods',
@@ -31,7 +31,7 @@ const routes = [
         }
 ]
 const router = new VueRouter({
-    mode:'history', //去掉难看的#
+    // mode:'history', //去掉难看的#
     'linkActiveClass': 'active', 
     routes
 })
