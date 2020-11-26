@@ -54,36 +54,37 @@
         }
     }
   ```
-3. 访问地址
-  http://47.115.188.249:8000/
+    3. 访问地址
+    http://47.115.188.249:8000/
 
 
 
   - **hash模式**
-   vueEleme
-  1. 项目配置：
+ vueEleme
+ 
+    1. 项目配置： 
     `config/index.js` 文件中设置 `{assetsPublicPath: './'}` ，并且router `src/main.js`中模式不设置history
 
-  2. nginx设置：
-  ```js
-    server {
-        listen       80;
-        server_name  localhost;
+    2. nginx设置：   
+    ```js
+      server {
+          listen       80;
+          server_name  localhost;
 
-        access_log  logs/host.access.log;
+          access_log  logs/host.access.log;
 
-        location / {
-            root   /usr/local/nginx/html/;
-            index  index.html;
-        }
+          location / {
+              root   /usr/local/nginx/html/;
+              index  index.html;
+          }
 
-        location /element {
-            alias  html/element;
-            index  index.html index.htm;
-        }
-    }
-  ```
-  3. 访问地址
+          location /element {
+              alias  html/element;
+              index  index.html index.htm;
+          }
+      }
+    ```
+    3. 访问地址:  
     http://47.115.188.249/element/
 
 
